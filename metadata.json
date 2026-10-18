@@ -1,0 +1,6 @@
+{
+  "name": "Dokke - Windows Host & Touch Deck",
+  "description": "Host para Windows e Companion Touch Deck do Dokke: controle remoto de aplicativos, atalhos web personalizados e automação sem fio via rede local.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
