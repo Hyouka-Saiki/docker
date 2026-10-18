@@ -9,6 +9,7 @@ interface AppHeaderProps {
   serverStatus: 'online' | 'port-busy' | 'adopted' | 'failed';
   lanIp: string;
   onOpenQuickGuide: () => void;
+  onOpenDownload: () => void;
 }
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
@@ -17,6 +18,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   serverStatus,
   lanIp,
   onOpenQuickGuide,
+  onOpenDownload,
 }) => {
   return (
     <header className="flex items-center justify-between gap-8 px-6 py-3.5 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 shrink-0 select-none">
@@ -69,13 +71,20 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         </button>
       </nav>
 
-      {/* Zona 3: 1 Ação Principal */}
-      <div className="flex items-center gap-3 shrink-0">
+      {/* Zona 3: 1 Ação Principal e Ajuda */}
+      <div className="flex items-center gap-2.5 shrink-0">
+        <button
+          onClick={onOpenDownload}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors whitespace-nowrap shrink-0 shadow-sm"
+        >
+          <span>Como Baixar (PC &amp; Celular)</span>
+        </button>
+
         <button
           onClick={onOpenQuickGuide}
-          className="px-3.5 py-1.5 text-xs font-medium text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors whitespace-nowrap shrink-0"
+          className="px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors whitespace-nowrap shrink-0"
         >
-          Guia do Dokke
+          Guia de Uso
         </button>
       </div>
     </header>

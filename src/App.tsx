@@ -8,6 +8,7 @@ import { AppHeader, ViewMode } from './components/AppHeader';
 import { HostDesktop } from './components/HostDesktop';
 import { CompanionDeck } from './components/CompanionDeck';
 import { QuickGuideModal } from './components/QuickGuideModal';
+import { DownloadModal } from './components/DownloadModal';
 import { InstalledApp, DockButton, HostServerState } from './types/dokke';
 import {
   INITIAL_INSTALLED_APPS,
@@ -21,6 +22,7 @@ export default function App() {
   const [activeHostTab, setActiveHostTab] = useState<'apps' | 'about' | 'deck_settings'>('apps');
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [quickGuideOpen, setQuickGuideOpen] = useState(false);
+  const [downloadModalOpen, setDownloadModalOpen] = useState(false);
 
   // Estado do Servidor Dokke
   const [serverState, setServerState] = useState<HostServerState>({
@@ -225,6 +227,7 @@ export default function App() {
         serverStatus={serverState.status}
         lanIp={serverState.lanIp}
         onOpenQuickGuide={() => setQuickGuideOpen(true)}
+        onOpenDownload={() => setDownloadModalOpen(true)}
       />
 
       {/* Notificação Toast */}
@@ -339,6 +342,14 @@ export default function App() {
       <QuickGuideModal
         isOpen={quickGuideOpen}
         onClose={() => setQuickGuideOpen(false)}
+        lanIp={serverState.lanIp}
+        pin={serverState.pin}
+      />
+
+      {/* Modal Como Baixar & Instalar */}
+      <DownloadModal
+        isOpen={downloadModalOpen}
+        onClose={() => setDownloadModalOpen(false)}
         lanIp={serverState.lanIp}
         pin={serverState.pin}
       />
